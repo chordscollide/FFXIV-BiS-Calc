@@ -18,18 +18,68 @@ namespace FFXIVBISCALC {
   /// Interaction logic for MainWindow.xaml
   /// </summary>
   public partial class MainWindow : Window {
-    
+
     public MainWindow() {
       InitializeComponent();
     }
+
+    double WEPWEIGHT = 0;
+    double MAINWEIGHT = 0;
+    double DTRWEIGHT = 0;
+    double CRITWEIGHT = 0;
+    double ACCWEIGHT = 0;
+    double SKSWEIGHT = 0;
+    int ACCCAP = 0;
+
+
     public class Item {
       public string name = "";
-      public int WEP = 0;
-      public int DEX = 0;
-      public int ACC = 0;
-      public int CRIT = 0;
-      public int DTR = 0;
-      public int SKS = 0;
+      public double WEP = 0;
+      public double DEX = 0;
+      public double ACC = 0;
+      public double CRIT = 0;
+      public double DTR = 0;
+      public double SKS = 0;
+    }
+
+    public class Food {
+      public string name = "";
+      public double critmax = 0;
+      public double dtrmax = 0;
+      public double accmax = 0;
+      public double sksmax = 0;
+      public double critper = 0;
+      public double dtrper = 0;
+      public double accper = 0;
+      public double sksper = 0;
+    }
+
+    public class GearSet {
+      public Item weapon;
+      public Item head;
+      public Item body;
+      public Item hands;
+      public Item belt;
+      public Item pants;
+      public Item feet;
+      public Item neck;
+      public Item earrings;
+      public Item wrists;
+      public Item ring1;
+      public Item ring2;
+      public Food food;
+      public double wepdmg;
+      public double totaldex;
+      public double bonusdex;
+      public double totalcrit;
+      public double bonuscrit;
+      public double totaldtr;
+      public double bonusdtr;
+      public double totalacc;
+      public double bonusacc;
+      public double totalsks;
+      public double bonussks;
+      public double dpsscore;
     }
 
     Item highallagancompositebow = new HighAllaganCompositeBow();
@@ -54,6 +104,12 @@ namespace FFXIVBISCALC {
     Item auroralearrings = new AuroralEarrings();
     Item highallaganbreechesofaiming = new HighAllaganBreechesOfAiming();
     Item highallaganbraceletsofaiming = new HighAllaganBraceletsOfAiming();
+    Food hqapkalluomelette = new HQApkalluOmelette();
+    Food hqblacktrufflerisotto = new HQBlackTruffleRisotto();
+    Food hqbuttonsinablanket = new HQButtonsInABlanket();
+    Food hqdeviledeggs = new HQDeviledEggs();
+    Food hqstuffedcabbage = new HQStuffedCabage();
+    Food hqlavatoadlegs = new HQLavaToadLegs();
 
     public class HighAllaganCompositeBow : Item {
       public HighAllaganCompositeBow() {
@@ -255,6 +311,77 @@ namespace FFXIVBISCALC {
       }
     }
 
+    public class HQSteamedCatfish : Food {
+      public HQSteamedCatfish() {
+        name = "HQ Steamed Catfish";
+        critmax = 0;
+        critper = 0;
+        accmax = 0;
+        accper = 0;
+      }
+    }
+
+    public class HQLavaToadLegs : Food {
+      public HQLavaToadLegs() {
+        name = "HQ Lava Toad Legs";
+        accmax = 27;
+        accper = 0.05;
+        critmax = 11;
+        critper = 0.02;
+      }
+    }
+
+    public class HQStuffedCabage : Food {
+      public HQStuffedCabage() {
+        name = "HQ Stuffed Cabbage";
+        accmax = 21;
+        accper = 0.05;
+        critmax = 9;
+        critper = 0.02;
+      }
+    }
+
+    public class HQButtonsInABlanket : Food {
+      public HQButtonsInABlanket() {
+        name = "HQ Buttons in a Blanket";
+        dtrmax = 16;
+        dtrper = 0.05;
+        critmax = 10;
+        critper = 0.02;
+      }
+    }
+
+    public class HQBlackTruffleRisotto : Food {
+      public HQBlackTruffleRisotto() {
+        name = "HQ Black Truffle Risotto";
+        dtrmax = 17;
+        dtrper = 0.05;
+        critper = 0.02;
+        critmax = 11;
+      }
+    }
+
+    public class HQApkalluOmelette : Food {
+      public HQApkalluOmelette() {
+        name = "HQ Apkallu Omelette";
+        critmax = 27;
+        critper = 0.05;
+        accmax = 11;
+        accper = 0.02;
+      }
+    }
+
+    public class HQDeviledEggs : Food {
+      public HQDeviledEggs() {
+        name = "HQ Deviled Eggs";
+        critmax = 24;
+        critper = 0.05;
+        accmax = 10;
+        accper = 0.02;
+      }
+    }
+
+
     public void makelists() {
       //initialize variables
       List<Item> weaponsl = new List<Item>();
@@ -268,10 +395,9 @@ namespace FFXIVBISCALC {
       List<Item> earringls = new List<Item>();
       List<Item> wristsl = new List<Item>();
       List<Item> ringsl = new List<Item>();
-      
-      
+      List<Food> foods = new List<Food>();
 
-      //add checked items to lists
+      //add checked Objects to lists
       if ((bool)highallaganweapon.IsChecked) { weaponsl.Add(highallagancompositebow); }
       if ((bool)ilvl110soldweapon.IsChecked) { weaponsl.Add(rosenbogen); }
       /*if ((bool)ilvl100soldweapon.IsChecked) { weaponsl.Add("ilvl100soldweapon"); }
@@ -346,6 +472,13 @@ namespace FFXIVBISCALC {
       if ((bool)mythring.IsChecked) { ringsl.Add("mythring"); }
       if ((bool)garudaring.IsChecked) { ringsl.Add("garudaring"); } */
 
+      foods.Add(hqapkalluomelette);
+      foods.Add(hqblacktrufflerisotto);
+      foods.Add(hqdeviledeggs);
+      foods.Add(hqlavatoadlegs);
+      foods.Add(hqbuttonsinablanket);
+      foods.Add(hqstuffedcabbage);
+
       //convert to arrays
       Item[] weaponsarr = weaponsl.ToArray();
       Item[] headsarr = headsl.ToArray();
@@ -358,28 +491,153 @@ namespace FFXIVBISCALC {
       Item[] earringsarr = earringls.ToArray();
       Item[] wristsarr = wristsl.ToArray();
       Item[] ringsarr = ringsl.ToArray();
+      Food[] foodarr = foods.ToArray();
       //string[] foodarr = { "buttonsinablanket", "apkalluomelette" };
-      
+
       //carteisan product
-      var gearsets = from weapon in weaponsarr
-                     from head in headsarr
-                     from body in bodiesarr
-                     from hands in handsarr
-                     from belt in beltsarr
-                     from pants in pantsarr
-                     from feet in feetarr
-                     from neck in necksarr
-                     from earrings in earringsarr
-                     from wrists in wristsarr
-                     from ring1 in ringsarr
-                     from ring2 in ringsarr
-                     //from food in foodarr
-                     select new[] { weapon, head, body, hands, belt, pants, feet, neck, earrings, wrists, ring1, ring2 };
+      var gearsets = (from weapon in weaponsarr
+                      from head in headsarr
+                      from body in bodiesarr
+                      from hands in handsarr
+                      from belt in beltsarr
+                      from pants in pantsarr
+                      from feet in feetarr
+                      from neck in necksarr
+                      from earrings in earringsarr
+                      from wrists in wristsarr
+                      from ring1 in ringsarr
+                      from ring2 in ringsarr where ring2 != ring1
+                      from food in foodarr
+                      select new List<object> { weapon, head, body, hands, belt, pants, feet, neck, earrings, wrists, ring1, ring2, food }).ToList();
 
-      CONSOLE.Text = weaponsarr[1].name;
-      //foreach (var item in gearsets) { GearSets.Text += item[0] + ", " + item[1] + ", " + item[2] + ", " + item[3] + ", " + item[4] + ", " + item[5] + ", " + item[6] + ", " + item[7] + ", " + item[8] + ", " + item[9] + ", " + item[10] + ", " + item[11] + ", " + item[12] + ", " + "\n";}
+      List<GearSet> GearSets = new List<GearSet>();
+      for (var x = 0; x < gearsets.Count - 1; x++) {
+        GearSet TempGearSet = new GearSet();
+        TempGearSet.weapon = (Item)gearsets[x][0];
+        TempGearSet.head = (Item)gearsets[x][1];
+        TempGearSet.body = (Item)gearsets[x][2];
+        TempGearSet.hands = (Item)gearsets[x][3];
+        TempGearSet.belt = (Item)gearsets[x][4];
+        TempGearSet.pants = (Item)gearsets[x][5];
+        TempGearSet.feet = (Item)gearsets[x][6];
+        TempGearSet.neck = (Item)gearsets[x][7];
+        TempGearSet.earrings = (Item)gearsets[x][8];
+        TempGearSet.wrists = (Item)gearsets[x][9];
+        TempGearSet.ring1 = (Item)gearsets[x][10];
+        TempGearSet.ring2 = (Item)gearsets[x][11];
+        TempGearSet.food = (Food)gearsets[x][12];
 
-      //feet.Exists(x => x == "mythfeet")
+        double WEP = 0;
+        double DEX = 274;
+        double ACC = 341;
+        double CRIT = 341;
+        double DTR = 202;
+        double SKS = 341;
+
+        //sum of stats
+        for (var y = 0; y < gearsets[x].Count - 2; y++) {
+          WEP += ((Item)gearsets[x][y]).WEP;
+          DEX += ((Item)gearsets[x][y]).DEX;
+          ACC += ((Item)gearsets[x][y]).ACC;
+          CRIT += ((Item)gearsets[x][y]).CRIT;
+          DTR += ((Item)gearsets[x][y]).DTR;
+          SKS += ((Item)gearsets[x][y]).SKS;
+        }
+
+        //food
+        if (ACC * ((Food)gearsets[x][12]).accper > ((Food)gearsets[x][12]).accmax) {
+          ACC += ((Food)gearsets[x][12]).accmax;
+        } else { ACC += Math.Floor((ACC + 341) * ((Food)gearsets[x][12]).accper); }
+        if (CRIT * ((Food)gearsets[x][12]).critper > ((Food)gearsets[x][12]).critper) {
+          CRIT += ((Food)gearsets[x][12]).critmax;
+        } else { CRIT += Math.Floor((CRIT + 341) * ((Food)gearsets[x][12]).critper); }
+        if (DTR * ((Food)gearsets[x][12]).dtrper > ((Food)gearsets[x][12]).dtrper) {
+          DTR += ((Food)gearsets[x][12]).dtrper;
+        } else { DTR += Math.Floor((DTR + 341) * ((Food)gearsets[x][12]).dtrper); }
+        if (SKS * ((Food)gearsets[x][12]).sksper > ((Food)gearsets[x][12]).sksper) {
+          SKS += ((Food)gearsets[x][12]).sksper;
+        } else { SKS += Math.Floor((SKS + 341) * ((Food)gearsets[x][12]).sksper); }
+
+        //create object
+        TempGearSet.wepdmg = WEP;
+        TempGearSet.totaldex = DEX;
+        TempGearSet.bonusdex = DEX - 274;
+        TempGearSet.totalacc = ACC;
+        TempGearSet.bonusacc = ACC - 341;
+        TempGearSet.totalcrit = CRIT;
+        TempGearSet.bonuscrit = CRIT - 341;
+        TempGearSet.totaldtr = DTR;
+        TempGearSet.bonusdtr = DTR - 202;
+        TempGearSet.totalsks = SKS;
+        TempGearSet.bonussks = SKS - 341;
+
+        //acc cap 
+        double calcdacc = 0;
+        if (TempGearSet.totalacc > ACCCAP) {
+          calcdacc = ACCCAP - 341;
+        } else { calcdacc = TempGearSet.bonusacc; }
+
+        //dps score
+        TempGearSet.dpsscore = TempGearSet.wepdmg * WEPWEIGHT + TempGearSet.bonusdex * MAINWEIGHT + calcdacc * ACCWEIGHT + TempGearSet.bonuscrit * CRITWEIGHT + TempGearSet.bonusdtr * DTRWEIGHT + TempGearSet.bonussks * SKSWEIGHT;
+
+        if (TempGearSet.ring1.name != TempGearSet.ring2.name) {
+          GearSets.Add(TempGearSet);
+        }
+      }
+
+      for (var x = 0; x <= GearSets.Count - 1; x++) {
+        if (GearSets[x].ring1.name == GearSets[x].ring2.name) { GearSets.RemoveAt(x); }
+      }
+      GearSets = GearSets.Distinct().ToList();
+      GearSets = GearSets.OrderBy(x => x.dpsscore).ToList();
+      
+
+      Results.Text = "";
+      var count = 1;
+      for (var x = GearSets.Count - 1; x >= GearSets.Count - 5; x--) {
+        
+        Results.Text += "Gear Set: " + count;
+        count += 1;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Weapon: " + GearSets[x].weapon.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Head: " + GearSets[x].head.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Body: " + GearSets[x].body.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Hands: " + GearSets[x].hands.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Belt: " + GearSets[x].belt.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Pants: " + GearSets[x].pants.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Feet: " + GearSets[x].feet.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Neck: " + GearSets[x].neck.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Earrings: " + GearSets[x].earrings.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Wrists: " + GearSets[x].wrists.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Ring 1: " + GearSets[x].ring1.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Ring 2: " + GearSets[x].ring2.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Food: " + GearSets[x].food.name;
+        Results.Text += Environment.NewLine;
+        Results.Text += "WepDmg: " + GearSets[x].wepdmg + "  Dex: " + GearSets[x].totaldex;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Acc: " + GearSets[x].totalacc + "  Crit: " + GearSets[x].totalcrit;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Dtr: " + GearSets[x].totaldtr + "  Sks: " + GearSets[x].totalsks;
+        Results.Text += Environment.NewLine;
+        Results.Text += "Score: " + GearSets[x].dpsscore;
+        Results.Text += Environment.NewLine;
+        Results.Text += Environment.NewLine;
+
+      }
+
+
     }
 
     private void Button_Click(object sender, RoutedEventArgs e) {
@@ -387,6 +645,14 @@ namespace FFXIVBISCALC {
     }
 
     public void calculate() {
+      WEPWEIGHT = Convert.ToDouble(WepWeight.Text);
+      MAINWEIGHT = Convert.ToDouble(MainWeight.Text);
+      CRITWEIGHT = Convert.ToDouble(CritWeight.Text);
+      DTRWEIGHT = Convert.ToDouble(DetWeight.Text);
+      SKSWEIGHT = Convert.ToDouble(SksWeight.Text);
+      ACCWEIGHT = Convert.ToDouble(AccWeight.Text);
+      ACCCAP = Convert.ToInt32(AccCap.Text);
+
       makelists();
     }
 
