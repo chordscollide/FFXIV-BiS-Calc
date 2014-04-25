@@ -580,15 +580,13 @@ namespace FFXIVBISCALC {
         //dps score
         TempGearSet.dpsscore = TempGearSet.wepdmg * WEPWEIGHT + TempGearSet.bonusdex * MAINWEIGHT + calcdacc * ACCWEIGHT + TempGearSet.bonuscrit * CRITWEIGHT + TempGearSet.bonusdtr * DTRWEIGHT + TempGearSet.bonussks * SKSWEIGHT;
 
-        if (TempGearSet.ring1.name != TempGearSet.ring2.name) {
-          GearSets.Add(TempGearSet);
-        }
+        GearSets.Add(TempGearSet);
       }
 
-      for (var x = 0; x <= GearSets.Count - 1; x++) {
-        if (GearSets[x].ring1.name == GearSets[x].ring2.name) { GearSets.RemoveAt(x); }
-      }
+      
       GearSets = GearSets.Distinct().ToList();
+
+
       GearSets = GearSets.OrderBy(x => x.dpsscore).ToList();
       
 
