@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FFXIVBISCALC.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="BiS / BiB Calculator" Height="380" Width="1087">
+        Title="BiS / BiB Calculator" Height="544.986" Width="962.462">
     <Grid HorizontalAlignment="Left" Width="963">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
@@ -9,25 +9,25 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TabControl HorizontalAlignment="Left" Height="339" VerticalAlignment="Top" Width="1072" Grid.ColumnSpan="4" Margin="0,0,-109,0">
+        <TabControl HorizontalAlignment="Left" Height="514" VerticalAlignment="Top" Width="963" Grid.ColumnSpan="2">
             <TabItem Header="Input">
-                <Grid Background="#FFFFFF" Margin="0,0,1,0">
+                <Grid Background="#FFFFFF" Margin="0,0,-4,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="857*"/>
-                        <ColumnDefinition Width="128*"/>
+                        <ColumnDefinition Width="938*"/>
+                        <ColumnDefinition Width="47*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Class" HorizontalAlignment="Left" Margin="1,7,0,0" VerticalAlignment="Top"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="38,11,0,0" VerticalAlignment="Top" Width="78">
+                    <Label Content="Class" HorizontalAlignment="Left" Margin="1,7,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="38,11,0,0" VerticalAlignment="Top" Width="78" Height="22">
                         <ComboBoxItem Content="Bard" IsSelected="True"/>
                     </ComboBox>
-                    <Label Content="Weights" HorizontalAlignment="Left" Margin="47,60,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Wep Dmg" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Main Stat" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
-                    <Label Content="DTR" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
-                    <Label Content="CRIT" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
-                    <Label Content="SKS" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top"/>
-                    <Label Content="ACC" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
-                    <Label Content="ACC Cap" HorizontalAlignment="Left" Margin="125,7,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Weights" HorizontalAlignment="Left" Margin="47,60,0,0" VerticalAlignment="Top" Height="26" Width="53"/>
+                    <Label Content="Wep Dmg" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+                    <Label Content="Main Stat" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
+                    <Label Content="DTR" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Height="26" Width="32"/>
+                    <Label Content="CRIT" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Height="26" Width="34"/>
+                    <Label Content="SKS" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Height="26" Width="30"/>
+                    <Label Content="ACC" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Height="26" Width="33"/>
+                    <Label Content="ACC Cap" HorizontalAlignment="Left" Margin="125,7,0,0" VerticalAlignment="Top" Height="26" Width="56"/>
                     <TextBox x:Name="WepWeight" HorizontalAlignment="Left" Height="21" Margin="79,89,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="80"/>
                     <TextBox x:Name="MainWeight" HorizontalAlignment="Left" Height="21" Margin="79,114,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="80"/>
                     <TextBox x:Name="DetWeight" HorizontalAlignment="Left" Height="21" Margin="79,140,0,0" TextWrapping="Wrap" Text="0.2" VerticalAlignment="Top" Width="80"/>
@@ -35,82 +35,81 @@
                     <TextBox x:Name="SksWeight" HorizontalAlignment="Left" Height="21" Margin="79,191,0,0" TextWrapping="Wrap" Text="0.1" VerticalAlignment="Top" Width="80"/>
                     <TextBox x:Name="AccWeight" HorizontalAlignment="Left" Height="21" Margin="79,218,0,0" TextWrapping="Wrap" Text="0.9" VerticalAlignment="Top" Width="80"/>
                     <TextBox x:Name="AccCap" HorizontalAlignment="Left" Height="21" Margin="185,11,0,0" TextWrapping="Wrap" Text="494" VerticalAlignment="Top" Width="80"/>
-                    <Label Content="Main Hand" HorizontalAlignment="Left" Margin="195,42,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Head" HorizontalAlignment="Left" Margin="195,62,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Body" HorizontalAlignment="Left" Margin="195,82,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Hands" HorizontalAlignment="Left" Margin="195,102,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Belt" HorizontalAlignment="Left" Margin="195,122,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Pants" HorizontalAlignment="Left" Margin="195,142,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Feet" HorizontalAlignment="Left" Margin="195,162,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Neck" HorizontalAlignment="Left" Margin="195,182,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Earrings" HorizontalAlignment="Left" Margin="195,202,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Wrists" HorizontalAlignment="Left" Margin="195,222,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Rings" HorizontalAlignment="Left" Margin="195,242,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganweapon" Content="High Allagan" HorizontalAlignment="Left" Margin="268,48,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldweapon" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,48,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldweapon" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,48,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganweapon" Content="Allagan" HorizontalAlignment="Left" Margin="540,48,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="zenithweapon" Content="Zenith" HorizontalAlignment="Left" Margin="605,48,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="ilvl100leviweapon" Content="iLvl100 Levi" HorizontalAlignment="Left" Margin="661,48,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="ilvl95leviweapon" Content="iLvl95 Levi" HorizontalAlignment="Left" Margin="747,48,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <CheckBox x:Name="atmaweapon" Content="Atma" HorizontalAlignment="Left" Margin="828,48,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="animusweapon" Content="Animus" HorizontalAlignment="Left" Margin="882,48,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <CheckBox x:Name="highallaganhead" Content="High Allagan" HorizontalAlignment="Left" Margin="268,68,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldhead" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,68,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldhead" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,68,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganhead" Content="Allagan" HorizontalAlignment="Left" Margin="540,68,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythhead" Content="Myth" HorizontalAlignment="Left" Margin="605,68,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganbody" Content="High Allagan" HorizontalAlignment="Left" Margin="268,88,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldbody" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,88,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldbody" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,88,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganbody" Content="Allagan" HorizontalAlignment="Left" Margin="540,88,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythbody" Content="Myth" HorizontalAlignment="Left" Margin="605,88,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganhands" Content="High Allagan" HorizontalAlignment="Left" Margin="268,108,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldhands" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,108,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldhands" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,108,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganhands" Content="Allagan" HorizontalAlignment="Left" Margin="540,108,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythhands" Content="Myth" HorizontalAlignment="Left" Margin="605,108,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganbelt" Content="High Allagan" HorizontalAlignment="Left" Margin="268,128,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldbelt" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,128,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldbelt" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,128,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganbelt" Content="Allagan" HorizontalAlignment="Left" Margin="540,128,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythbelt" Content="Myth" HorizontalAlignment="Left" Margin="605,128,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganpants" Content="High Allagan" HorizontalAlignment="Left" Margin="268,148,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldpants" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,148,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldpants" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,148,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganpants" Content="Allagan" HorizontalAlignment="Left" Margin="540,148,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythpants" Content="Myth" HorizontalAlignment="Left" Margin="605,148,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganfeet" Content="High Allagan" HorizontalAlignment="Left" Margin="268,168,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldfeet" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,168,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldfeet" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,168,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganfeet" Content="Allagan" HorizontalAlignment="Left" Margin="540,168,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythfeet" Content="Myth" HorizontalAlignment="Left" Margin="605,168,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganneck" Content="High Allagan" HorizontalAlignment="Left" Margin="268,188,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldneck" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,188,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldneck" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,188,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganneck" Content="Allagan" HorizontalAlignment="Left" Margin="540,188,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythneck" Content="Myth" HorizontalAlignment="Left" Margin="605,188,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="moogleneck" Content="Moogle" HorizontalAlignment="Left" Margin="661,188,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganearrings" Content="High Allagan" HorizontalAlignment="Left" Margin="268,208,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldearrings" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,208,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldearrings" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,208,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganearrings" Content="Allagan" HorizontalAlignment="Left" Margin="540,208,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythearrings" Content="Myth" HorizontalAlignment="Left" Margin="605,208,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="titanearrings" Content="Titan" HorizontalAlignment="Left" Margin="661,208,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganwrists" Content="High Allagan" HorizontalAlignment="Left" Margin="268,228,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldwrists" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,228,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldwrists" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,228,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganwrists" Content="Allagan" HorizontalAlignment="Left" Margin="540,228,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythwrists" Content="Myth" HorizontalAlignment="Left" Margin="605,228,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="ifritwrists" Content="Ifrit" HorizontalAlignment="Left" Margin="661,229,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="highallaganring" Content="High Allagan" HorizontalAlignment="Left" Margin="268,248,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl110soldring" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,248,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox x:Name="ilvl100soldring" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,248,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="allaganring" Content="Allagan" HorizontalAlignment="Left" Margin="540,248,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="mythring" Content="Myth" HorizontalAlignment="Left" Margin="605,248,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="garudaring" Content="Garuda" HorizontalAlignment="Left" Margin="661,248,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Calculate" HorizontalAlignment="Left" Margin="38,281,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="Button_Click"/>
-                    <TextBox x:Name="CONSOLE" HorizontalAlignment="Left" Height="23" Margin="10,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="876"/>
+                    <Label Content="Main Hand" HorizontalAlignment="Left" Margin="195,42,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
+                    <Label Content="Head" HorizontalAlignment="Left" Margin="195,62,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+                    <Label Content="Body" HorizontalAlignment="Left" Margin="195,82,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
+                    <Label Content="Hands" HorizontalAlignment="Left" Margin="195,102,0,0" VerticalAlignment="Top" Height="26" Width="44"/>
+                    <Label Content="Belt" HorizontalAlignment="Left" Margin="195,122,0,0" VerticalAlignment="Top" Height="26" Width="30"/>
+                    <Label Content="Pants" HorizontalAlignment="Left" Margin="195,142,0,0" VerticalAlignment="Top" Height="26" Width="39"/>
+                    <Label Content="Feet" HorizontalAlignment="Left" Margin="195,162,0,0" VerticalAlignment="Top" Height="26" Width="32"/>
+                    <Label Content="Neck" HorizontalAlignment="Left" Margin="195,182,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
+                    <Label Content="Earrings" HorizontalAlignment="Left" Margin="195,202,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
+                    <Label Content="Wrists" HorizontalAlignment="Left" Margin="195,222,0,0" VerticalAlignment="Top" Height="26" Width="43"/>
+                    <Label Content="Rings" HorizontalAlignment="Left" Margin="195,242,0,0" VerticalAlignment="Top" Height="26" Width="39"/>
+                    <CheckBox x:Name="highallaganweapon" Content="High Allagan" HorizontalAlignment="Left" Margin="268,48,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldweapon" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,48,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldweapon" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,48,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganweapon" Content="Allagan" HorizontalAlignment="Left" Margin="540,48,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="zenithweapon" Content="Zenith" HorizontalAlignment="Left" Margin="605,48,0,0" VerticalAlignment="Top" Height="15" Width="54"/>
+                    <CheckBox x:Name="ilvl100leviweapon" Content="iLvl100 Levi" HorizontalAlignment="Left" Margin="661,48,0,0" VerticalAlignment="Top" Height="15" Width="80"/>
+                    <CheckBox x:Name="ilvl95leviweapon" Content="iLvl95 Levi" HorizontalAlignment="Left" Margin="747,48,0,0" VerticalAlignment="Top" Height="15" Width="74"/>
+                    <CheckBox x:Name="atmaweapon" Content="Atma" HorizontalAlignment="Left" Margin="826,48,0,0" VerticalAlignment="Top" Height="15" Width="55"/>
+                    <CheckBox x:Name="animusweapon" Content="Animus" HorizontalAlignment="Left" Margin="881,48,0,0" VerticalAlignment="Top" Height="15" Width="60" Grid.ColumnSpan="2"/>
+                    <CheckBox x:Name="highallaganhead" Content="High Allagan" HorizontalAlignment="Left" Margin="268,68,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldhead" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,68,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldhead" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,68,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganhead" Content="Allagan" HorizontalAlignment="Left" Margin="540,68,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythhead" Content="Myth" HorizontalAlignment="Left" Margin="605,68,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="highallaganbody" Content="High Allagan" HorizontalAlignment="Left" Margin="268,88,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldbody" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,88,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldbody" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,88,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganbody" Content="Allagan" HorizontalAlignment="Left" Margin="540,88,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythbody" Content="Myth" HorizontalAlignment="Left" Margin="605,88,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="highallaganhands" Content="High Allagan" HorizontalAlignment="Left" Margin="268,108,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldhands" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,108,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldhands" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,108,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganhands" Content="Allagan" HorizontalAlignment="Left" Margin="540,108,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythhands" Content="Myth" HorizontalAlignment="Left" Margin="605,108,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="highallaganbelt" Content="High Allagan" HorizontalAlignment="Left" Margin="268,128,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldbelt" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,128,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldbelt" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,128,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganbelt" Content="Allagan" HorizontalAlignment="Left" Margin="540,128,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythbelt" Content="Myth" HorizontalAlignment="Left" Margin="605,128,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="highallaganpants" Content="High Allagan" HorizontalAlignment="Left" Margin="268,148,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldpants" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,148,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldpants" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,148,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganpants" Content="Allagan" HorizontalAlignment="Left" Margin="540,148,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythpants" Content="Myth" HorizontalAlignment="Left" Margin="605,148,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="highallaganfeet" Content="High Allagan" HorizontalAlignment="Left" Margin="268,168,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldfeet" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,168,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldfeet" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,168,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganfeet" Content="Allagan" HorizontalAlignment="Left" Margin="540,168,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythfeet" Content="Myth" HorizontalAlignment="Left" Margin="605,168,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="highallaganneck" Content="High Allagan" HorizontalAlignment="Left" Margin="268,188,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldneck" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,188,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldneck" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,188,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganneck" Content="Allagan" HorizontalAlignment="Left" Margin="540,188,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythneck" Content="Myth" HorizontalAlignment="Left" Margin="605,188,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="moogleneck" Content="Moogle" HorizontalAlignment="Left" Margin="661,188,0,0" VerticalAlignment="Top" Height="15" Width="61"/>
+                    <CheckBox x:Name="highallaganearrings" Content="High Allagan" HorizontalAlignment="Left" Margin="268,208,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldearrings" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,208,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldearrings" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,208,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganearrings" Content="Allagan" HorizontalAlignment="Left" Margin="540,208,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythearrings" Content="Myth" HorizontalAlignment="Left" Margin="605,208,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="titanearrings" Content="Titan" HorizontalAlignment="Left" Margin="661,208,0,0" VerticalAlignment="Top" Height="15" Width="46"/>
+                    <CheckBox x:Name="highallaganwrists" Content="High Allagan" HorizontalAlignment="Left" Margin="268,228,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldwrists" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,228,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldwrists" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,228,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganwrists" Content="Allagan" HorizontalAlignment="Left" Margin="540,228,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythwrists" Content="Myth" HorizontalAlignment="Left" Margin="605,228,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="ifritwrists" Content="Ifrit" HorizontalAlignment="Left" Margin="661,229,0,0" VerticalAlignment="Top" Height="15" Width="38"/>
+                    <CheckBox x:Name="highallaganring" Content="High Allagan" HorizontalAlignment="Left" Margin="268,248,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="88"/>
+                    <CheckBox x:Name="ilvl110soldring" Content="iLvl110 Sold" HorizontalAlignment="Left" Margin="361,248,0,0" VerticalAlignment="Top" IsChecked="True" Height="15" Width="83"/>
+                    <CheckBox x:Name="ilvl100soldring" Content="iLvl100 Sold" HorizontalAlignment="Left" Margin="451,248,0,0" VerticalAlignment="Top" Height="15" Width="83"/>
+                    <CheckBox x:Name="allaganring" Content="Allagan" HorizontalAlignment="Left" Margin="540,248,0,0" VerticalAlignment="Top" Height="15" Width="60"/>
+                    <CheckBox x:Name="mythring" Content="Myth" HorizontalAlignment="Left" Margin="605,248,0,0" VerticalAlignment="Top" Height="15" Width="47"/>
+                    <CheckBox x:Name="garudaring" Content="Garuda" HorizontalAlignment="Left" Margin="661,248,0,0" VerticalAlignment="Top" Height="15" Width="58"/>
+                    <Button Content="Calculate" HorizontalAlignment="Left" Margin="840,282,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="20"/>
                 </Grid>
             </TabItem>
 
@@ -118,8 +117,8 @@
 
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="211*"/>
-                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="279*"/>
+                        <RowDefinition Height="32*"/>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -127,8 +126,8 @@
                         <ColumnDefinition Width="69*"/>
                         <ColumnDefinition Width="979*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="GearSets" HorizontalAlignment="Left" Height="311" TextWrapping="Wrap" VerticalAlignment="Top" Width="1066" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-                    <TextBox x:Name="Results" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="301" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1046" Grid.RowSpan="2"/>
+                    <TextBox x:Name="GearSets" HorizontalAlignment="Left" TextWrapping="Wrap" Width="945" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,0,0,-170"/>
+                    <TextBox x:Name="Results" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="471" Margin="10,10,0,-170" TextWrapping="Wrap" VerticalAlignment="Top" Width="935" Grid.RowSpan="2"/>
                 </Grid>
 
             </TabItem>

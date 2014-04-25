@@ -89,7 +89,7 @@ namespace FFXIVBISCALC {
     Item auroralbrais = new AuroralBrais();
     Item auroralwristlets = new AuroralWristlets();
     Item highallaganglovesofaiming = new HighAllaganGlovesOfAiming();
-    Item auroralring = new HighAllaganRingOfAiming();
+    Item auroralring = new AuroralRing();
     Item highallaganbeltofaiming = new HighAllaganBeltOfAiming();
     Item highallaganchokerofaiming = new HighAllaganChokerOfAiming();
     Item auroralbracers = new AuroralBracers();
@@ -582,10 +582,6 @@ namespace FFXIVBISCALC {
 
         GearSets.Add(TempGearSet);
       }
-
-      
-      GearSets = GearSets.Distinct().ToList();
-
 
       GearSets = GearSets.OrderBy(x => x.dpsscore).ToList();
       
