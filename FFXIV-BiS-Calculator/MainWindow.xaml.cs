@@ -598,6 +598,94 @@ namespace FFXIVBISCALC {
     }
   }
 
+  public class JudgmentRingOfCasting : Item {
+    public JudgmentRingOfCasting() {
+      name = "Judgment Ring of Casting";
+      INT = 16;
+      CRIT = 17;
+      DTR = 9;
+      DEF = 1;
+      MDEF = 1;
+      slot = "ring";
+      ilvl = 100;
+    }
+  }
+
+  public class SapphireRing : Item {
+    public SapphireRing() {
+      name = "Sapphire Ring";
+      INT = 13;
+      SPS = 16;
+      DTR = 11;
+      CRIT = 16;
+      ACC = 9;
+      DEF = 1;
+      MDEF = 1;
+      slot = "ring";
+      ilvl = 100;
+    }
+  }
+
+  public class SapphireRing2 : Item {
+    public SapphireRing2() {
+      name = "Sapphire Ring ";
+      INT = 13;
+      SPS = 16;
+      DTR = 11;
+      CRIT = 9;
+      ACC = 16;
+      DEF = 1;
+      MDEF = 1;
+      slot = "ring";
+      ilvl = 100;
+    }
+  }
+
+    public class SapphireChoker : Item {
+    public SapphireChoker() {
+      name = "Sapphire Choker";
+      INT = 13;
+      SPS = 16;
+      DTR = 11;
+      CRIT = 9;
+      ACC = 16;
+      DEF = 1;
+      MDEF = 1;
+      slot = "neck";
+      ilvl = 100;
+    }
+  }
+
+    public class SapphireBracelet : Item {
+    public SapphireBracelet() {
+      name = "Sapphire Bracelet";
+      INT = 13;
+      SPS = 16;
+      DTR = 11;
+      CRIT = 9;
+      ACC = 16;
+      DEF = 1;
+      MDEF = 1;
+      slot = "wrist";
+      ilvl = 100;
+    }
+  }
+
+    public class SapphireEarrings : Item {
+    public SapphireEarrings() {
+      name = "Sapphire Earrings";
+      INT = 13;
+      SPS = 16;
+      DTR = 11;
+      CRIT = 9;
+      ACC = 16;
+      DEF = 1;
+      MDEF = 1;
+      slot = "earrings";
+      ilvl = 100;
+    }
+  }
+
   public class HighAllaganRingOfCasting : Item {
     public HighAllaganRingOfCasting() {
       job = "Caster";
@@ -631,6 +719,17 @@ namespace FFXIVBISCALC {
       DEX = 42;
       CRIT = 31;
       SKS = 44;
+    }
+  }
+
+  public class ArtemisBowNovus : Item {
+    public ArtemisBowNovus() {
+      name = "Artemis Bow Novus";
+      WEP = 46;
+      DEX = 42;
+      DTR = 31;
+      ACC = 44;
+
     }
   }
 
@@ -757,6 +856,59 @@ namespace FFXIVBISCALC {
       DEX = 18;
       ACC = 13;
       SKS = 19;
+    }
+  }
+
+  public class IoliteRing : Item {
+    public IoliteRing() {
+      name = "Iolite Ring";
+      DEX = 13;
+      ACC = 16;
+      CRIT = 16;
+      DTR = 11;
+    }
+  }
+
+  public class IoliteRing2 : Item {
+    public IoliteRing2() {
+      name = "Iolite Ring ";
+      DEX = 13;
+      ACC = 16;
+      CRIT = 16;
+      DTR = 11;
+    }
+  }
+
+  public class IoliteBracelet : Item {
+    public IoliteBracelet() {
+      name = "Iolite Bracelet";
+      DEX = 13;
+      ACC = 16;
+      SKS = 9;
+      CRIT = 16;
+      DTR = 11;
+    }
+  }
+
+  public class IoliteEarrings : Item {
+    public IoliteEarrings() {
+      name = "Iolite Earrings";
+      DEX = 13;
+      ACC = 16;
+      SKS = 9;
+      CRIT = 16;
+      DTR = 11;
+    }
+  }
+
+  public class IoliteChoker : Item {
+    public IoliteChoker() {
+      name = "Iolite Choker";
+      DEX = 13;
+      ACC = 16;
+      SKS = 9;
+      CRIT = 16;
+      DTR = 11;
     }
   }
 
@@ -923,7 +1075,14 @@ namespace FFXIVBISCALC {
     }
   }
 
-
+  public class JudgmentRingOfAiming : Item {
+    public JudgmentRingOfAiming() {
+      name = "Judgment Ring of Aiming";
+      DEX = 16;
+      CRIT = 17;
+      SKS = 12;
+    }
+  }
   public class HQSteamedCatfish : Food {
     public HQSteamedCatfish() {
       name = "HQ Steamed Catfish";
@@ -994,6 +1153,7 @@ namespace FFXIVBISCALC {
     }
   }
 
+  
   public class HQSachertorte : Food {
     public HQSachertorte() {
       name = "HQ Sachertorte";
@@ -1003,6 +1163,7 @@ namespace FFXIVBISCALC {
       dtrper = 0.02;
     }
   }
+
 
   public partial class MainWindow : Window {
 
@@ -1039,6 +1200,7 @@ namespace FFXIVBISCALC {
     Item auroralboots = new AuroralBoots();
     Item highallaganmaskofaiming = new HighAllaganMaskOfAiming();
     Item auroralearrings = new AuroralEarrings();
+    Item artemisbownovus = new ArtemisBowNovus();
 
     Item highallaganbreechesofaiming = new HighAllaganBreechesOfAiming();
     Item highallaganbraceletsofaiming = new HighAllaganBraceletsOfAiming();
@@ -1085,6 +1247,21 @@ namespace FFXIVBISCALC {
     Item evenstarring = new EvenstarRing();
     Item highallaganringofcasting = new HighAllaganRingOfCasting();
 
+    Item judgmentringofcasting = new JudgmentRingOfCasting();
+    Item judgmentringofaiming = new JudgmentRingOfAiming();
+
+    Item iolitering = new IoliteRing();
+    Item iolitebracelet = new IoliteBracelet();
+    Item ioliteearrings = new IoliteEarrings();
+    Item iolitechoker = new IoliteChoker();
+    Item iolitering2 = new IoliteRing2();
+
+    Item sapphirering = new SapphireRing();
+    Item sapphirering2 = new SapphireRing2();
+    Item sapphirechoker = new SapphireChoker();
+    Item sapphirebracelet = new SapphireBracelet();
+    Item sapphireearrings = new SapphireEarrings();
+
     public virtual void makelists() {
       //initialize variables
       List<Item> weaponsl = new List<Item>();
@@ -1127,20 +1304,27 @@ namespace FFXIVBISCALC {
 
         if ((bool)highallaganneck.IsChecked) { necksl.Add(highallaganchokerofcasting); }
         if ((bool)ilvl110soldneck.IsChecked) { necksl.Add(evenstarnecklace); }
+        if ((bool)i90neck.IsChecked) { necksl.Add(sapphirechoker); }
 
         if ((bool)highallaganearrings.IsChecked) { earringls.Add(highallaganearringsofcasting); }
         if ((bool)ilvl110soldearrings.IsChecked) { earringls.Add(evenstarearrings); }
+        if ((bool)i90earrings.IsChecked) { earringls.Add(sapphireearrings); }
 
         if ((bool)highallaganwrists.IsChecked) { wristsl.Add(highallaganbraceletsofcasting); }
         if ((bool)ilvl110soldwrists.IsChecked) { wristsl.Add(evenstararmillae); }
+        if ((bool)i90wrist.IsChecked) { wristsl.Add(sapphirebracelet); }
 
         if ((bool)highallaganring.IsChecked) { ringsl.Add(highallaganringofcasting); }
         if ((bool)ilvl110soldring.IsChecked) { ringsl.Add(evenstarring); }
+        if ((bool)ramuhring.IsChecked) { ringsl.Add(judgmentringofcasting); }
+        if ((bool)i90ring.IsChecked) { ringsl.Add(sapphirering); ringsl.Add(sapphirering2);}
+
       }
 
       if (Job.Text == "Bard") {
         if ((bool)highallaganweapon.IsChecked) { weaponsl.Add(highallagancompositebow); }
         if ((bool)ilvl110soldweapon.IsChecked) { weaponsl.Add(rosenbogen); }
+        if ((bool)novus.IsChecked) { weaponsl.Add(artemisbownovus); }
 
         if ((bool)highallaganhead.IsChecked) { headsl.Add(highallaganmaskofaiming); }
         if ((bool)ilvl110soldhead.IsChecked) { headsl.Add(auroralcoif); }
@@ -1162,15 +1346,22 @@ namespace FFXIVBISCALC {
 
         if ((bool)highallaganneck.IsChecked) { necksl.Add(highallaganchokerofaiming); }
         if ((bool)ilvl110soldneck.IsChecked) { necksl.Add(auroralchoker); }
+        if ((bool)i90neck.IsChecked) { necksl.Add(iolitechoker); }
 
         if ((bool)highallaganearrings.IsChecked) { earringls.Add(highallaganearringsofaiming); }
         if ((bool)ilvl110soldearrings.IsChecked) { earringls.Add(auroralearrings); }
+        if ((bool)i90earrings.IsChecked) { earringls.Add(ioliteearrings); }
 
         if ((bool)highallaganwrists.IsChecked) { wristsl.Add(highallaganbraceletsofaiming); }
         if ((bool)ilvl110soldwrists.IsChecked) { wristsl.Add(auroralwristlets); }
+        if ((bool)i90ring.IsChecked) { wristsl.Add(iolitebracelet); }
 
         if ((bool)highallaganring.IsChecked) { ringsl.Add(highallaganringofaiming); }
         if ((bool)ilvl110soldring.IsChecked) { ringsl.Add(auroralring); }
+        if ((bool)ramuhring.IsChecked) { ringsl.Add(judgmentringofaiming); }
+        if ((bool)i90ring.IsChecked) { ringsl.Add(iolitering); ringsl.Add(iolitering2); }
+        
+
       }
 
       if (Job.Text == "Choose") { return; }
@@ -1181,7 +1372,7 @@ namespace FFXIVBISCALC {
       foods.Add(hqlavatoadlegs);
       foods.Add(hqbuttonsinablanket);
       foods.Add(hqstuffedcabbage);
-      foods.Add(hqsachertorte);
+      //foods.Add(hqsachertorte);
 
       //convert to arrays
       Item[] weaponsarr = weaponsl.ToArray();
@@ -1232,6 +1423,16 @@ namespace FFXIVBISCALC {
         TempGearSet.ring2 = (Item)gearsets[x][11];
         TempGearSet.food = (Food)gearsets[x][12];
 
+        List<Item> ringtemp = new List<Item>();
+
+        ringtemp.Add(TempGearSet.ring1);
+        ringtemp.Add(TempGearSet.ring2);
+
+        ringtemp = ringtemp.OrderBy(o => o.name).ToList();
+
+        TempGearSet.ring1 = ringtemp[0];
+        TempGearSet.ring2 = ringtemp[1];
+
         double WEP = 0;
         double DEX = 274;
         double INT = 274;
@@ -1240,27 +1441,8 @@ namespace FFXIVBISCALC {
         double DTR = 202;
         double SKS = 341;
         double SPS = 341;
-        bool debug = false;
 
         //sum of stats
-        if (
-          TempGearSet.weapon == laevateinn &&
-          TempGearSet.head == highallaganmaskofcasting &&
-          TempGearSet.body == highallagancoatofcasting &&
-          TempGearSet.hands == evenstargloves &&
-          TempGearSet.belt == highallaganbeltofcasting &&
-          TempGearSet.pants == highallaganbreechesofcasting &&
-          TempGearSet.feet == evenstarbootees &&
-          TempGearSet.neck == evenstarnecklace &&
-          TempGearSet.earrings == evenstarearrings &&
-          TempGearSet.wrists == evenstararmillae &&
-          TempGearSet.ring1 == evenstarring &&
-          TempGearSet.ring2 == highallaganringofcasting &&
-          TempGearSet.food == hqdeviledeggs
-          ) { debug = true; }
-
-        if (debug) { }
-
         for (var y = 0; y < gearsets[x].Count - 1; y++) {
           WEP += ((Item)gearsets[x][y]).WEP;
           DEX += ((Item)gearsets[x][y]).DEX;
@@ -1321,11 +1503,19 @@ namespace FFXIVBISCALC {
         GearSets.Add(TempGearSet);
       }
 
-      GearSets = GearSets.OrderBy(x => x.dpsscore).ToList();
-
+      GearSets = GearSets.OrderBy(x => x.dpsscore).ThenBy(x => x.food.name).ToList();
+      
+      for (var x = GearSets.Count-1; x > 2; x-- ) {
+        if (GearSets[x].dpsscore == GearSets[x-1].dpsscore && GearSets[x].food.name == GearSets[x-1].food.name) {
+          GearSets.RemoveAt(x);
+        }
+      }
 
       Results.Text = "";
       var count = 1;
+      Results.Text += "Total Gear Sets: " + GearSets.Count;
+      Results.Text += Environment.NewLine;
+      Results.Text += Environment.NewLine;
       for (var x = GearSets.Count - 1; x >= GearSets.Count - 10; x--) {
 
         Results.Text += "Gear Set: " + count;
