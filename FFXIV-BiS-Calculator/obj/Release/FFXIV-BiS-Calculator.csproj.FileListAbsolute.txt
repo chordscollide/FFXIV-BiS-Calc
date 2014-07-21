@@ -1,0 +1,13 @@
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\bin\Release\FFXIV-BiS-Calculator.exe.config
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\bin\Release\FFXIV-BiS-Calculator.exe
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\bin\Release\FFXIV-BiS-Calculator.pdb
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\MainWindow.baml
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\MainWindow.g.cs
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\App.g.cs
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV-BiS-Calculator_MarkupCompile.cache
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV-BiS-Calculator.g.resources
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV_BiS_Calculator.Properties.Resources.resources
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV-BiS-Calculator.csproj.GenerateResource.Cache
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV-BiS-Calculator.exe
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV-BiS-Calculator.pdb
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\FFXIV-BiS-Calculator.csprojResolveAssemblyReference.cache

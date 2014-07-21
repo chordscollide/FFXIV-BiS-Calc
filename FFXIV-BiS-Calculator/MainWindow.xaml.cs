@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Threading;
+using avThreading;
 
 namespace FFXIVBISCALC {
   /// <summary>
@@ -100,9 +102,6 @@ namespace FFXIVBISCALC {
     public double sksweight = 0;
     public double spsweight = 0;
   }
-
-
-
 
   public partial class MainWindow : Window {
 
@@ -201,6 +200,53 @@ namespace FFXIVBISCALC {
     Item sapphirebracelet = new SapphireBracelet();
     Item sapphireearrings = new SapphireEarrings();
 
+    //****************************************************************************************
+    // GearSet sorting
+    //****************************************************************************************
+    private int Partition(GearSet[] input, int low, int high) {
+      GearSet pivot = input[high];
+      int i = low - 1;
+
+      for (int j = low; j < high; j++) {
+        if (input[j].dpsscore <= pivot.dpsscore 
+          || (input[j].dpsscore == pivot.dpsscore && input[i].food.name.CompareTo(pivot.food.name) < 0) ) {
+          i++;
+          swap(input, i, j);
+        }
+      }
+      swap(input, i + 1, high);
+      return i + 1;
+    }
+
+    private void swap(GearSet[] ar, int a, int b) {
+      var temp = ar[a];
+      ar[a] = ar[b];
+      ar[b] = temp;
+    }
+
+    private void QuicksortSequential(GearSet[] arr, int left, int right) {
+      if (right > left) {
+        int pivot = Partition(arr, left, right);
+        QuicksortSequential(arr, left, pivot - 1);
+        QuicksortSequential(arr, pivot + 1, right);
+      }
+    }
+
+    private void QuicksortParallel(GearSet[] arr, int left, int right) {
+      const int SEQUENTIAL_THRESHOLD = 2048;
+      if (right > left) {
+        if (right - left < SEQUENTIAL_THRESHOLD) {
+          QuicksortSequential(arr, left, right);
+        } else {
+          int pivot = Partition(arr, left, right);
+          Parallel.Invoke(
+              () => QuicksortParallel(arr, left, pivot - 1),
+              () => QuicksortParallel(arr, pivot + 1, right));
+        }
+      }
+    }
+    //****************************************************************************************
+
     public virtual void makelists() {
       //initialize variables
       List<Item> weaponsl = new List<Item>();
@@ -256,7 +302,7 @@ namespace FFXIVBISCALC {
         if ((bool)highallaganring.IsChecked) { ringsl.Add(highallaganringofcasting); }
         if ((bool)ilvl110soldring.IsChecked) { ringsl.Add(evenstarring); }
         if ((bool)ramuhring.IsChecked) { ringsl.Add(judgmentringofcasting); }
-        if ((bool)i90ring.IsChecked) { ringsl.Add(sapphirering); ringsl.Add(sapphirering2);}
+        if ((bool)i90ring.IsChecked) { ringsl.Add(sapphirering); ringsl.Add(sapphirering2); }
 
       }
 
@@ -299,7 +345,7 @@ namespace FFXIVBISCALC {
         if ((bool)ilvl110soldring.IsChecked) { ringsl.Add(auroralring); }
         if ((bool)ramuhring.IsChecked) { ringsl.Add(judgmentringofaiming); }
         if ((bool)i90ring.IsChecked) { ringsl.Add(iolitering); ringsl.Add(iolitering2); }
-        
+
 
       }
 
@@ -352,137 +398,155 @@ namespace FFXIVBISCALC {
       if (Job.Text == "BLM")
         CurrentJob = Classes_Enum.BLM;
 
+/*
+ * //      int num_Threads = Environment.ProcessorCount;
+      int test_count = 0;
+      using (new avForThread(0, 100, 4,
+         delegate(int start, int end)
+         {
+           for (int x = start; x < end; x++)
+           {
+             lock (cs)
+             {
+               test_count++;
+             }
+           }
+         })
+       ) ;*/
+
       Stopwatch Timer = new Stopwatch();
       Timer.Start();
-      List<GearSet> GearSets = new List<GearSet>();
-      for (var x = 0; x < gearsets.Count - 1; x++) {
-        GearSet TempGearSet = new GearSet();
-        TempGearSet.weapon = (Item)gearsets[x][0];
-        TempGearSet.head = (Item)gearsets[x][1];
-        TempGearSet.body = (Item)gearsets[x][2];
-        TempGearSet.hands = (Item)gearsets[x][3];
-        TempGearSet.belt = (Item)gearsets[x][4];
-        TempGearSet.pants = (Item)gearsets[x][5];
-        TempGearSet.feet = (Item)gearsets[x][6];
-        TempGearSet.neck = (Item)gearsets[x][7];
-        TempGearSet.earrings = (Item)gearsets[x][8];
-        TempGearSet.wrists = (Item)gearsets[x][9];
-        TempGearSet.ring1 = (Item)gearsets[x][10];
-        TempGearSet.ring2 = (Item)gearsets[x][11];
-        TempGearSet.food = (Food)gearsets[x][12];
 
-        List<Item> ringtemp = new List<Item>();
+      int TotalSets = gearsets.Count;
+      GearSet[] GearSets = new GearSet[TotalSets];
 
-        ringtemp.Add(TempGearSet.ring1);
-        ringtemp.Add(TempGearSet.ring2);
+      Parallel.For(0, TotalSets, delegate(int x)
+      {
+              GearSet TempGearSet = new GearSet();
+              TempGearSet.weapon = (Item)gearsets[x][0];
+              TempGearSet.head = (Item)gearsets[x][1];
+              TempGearSet.body = (Item)gearsets[x][2];
+              TempGearSet.hands = (Item)gearsets[x][3];
+              TempGearSet.belt = (Item)gearsets[x][4];
+              TempGearSet.pants = (Item)gearsets[x][5];
+              TempGearSet.feet = (Item)gearsets[x][6];
+              TempGearSet.neck = (Item)gearsets[x][7];
+              TempGearSet.earrings = (Item)gearsets[x][8];
+              TempGearSet.wrists = (Item)gearsets[x][9];
+              TempGearSet.ring1 = (Item)gearsets[x][10];
+              TempGearSet.ring2 = (Item)gearsets[x][11];
+              TempGearSet.food = (Food)gearsets[x][12];
 
-        ringtemp = ringtemp.OrderBy(o => o.name).ToList();
+              List<Item> ringtemp = new List<Item>();
 
-        TempGearSet.ring1 = ringtemp[0];
-        TempGearSet.ring2 = ringtemp[1];
+              ringtemp.Add(TempGearSet.ring1);
+              ringtemp.Add(TempGearSet.ring2);
 
-        double WEP = 0;
-        double DEX = 274;
-        double INT = 274;
-        double ACC = 341;
-        double CRIT = 341;
-        double DTR = 202;
-        double SKS = 341;
-        double SPS = 341;
+              ringtemp = ringtemp.OrderBy(o => o.name).ToList();
 
-        //sum of stats
-        for (var y = 0; y < gearsets[x].Count - 1; y++) {
-          WEP += ((Item)gearsets[x][y]).WEP;
-          DEX += ((Item)gearsets[x][y]).DEX;
-          INT += ((Item)gearsets[x][y]).INT;
-          ACC += ((Item)gearsets[x][y]).ACC;
-          CRIT += ((Item)gearsets[x][y]).CRIT;
-          DTR += ((Item)gearsets[x][y]).DTR;
-          SKS += ((Item)gearsets[x][y]).SKS;
-          SPS += ((Item)gearsets[x][y]).SPS;
-        }
+              TempGearSet.ring1 = ringtemp[0];
+              TempGearSet.ring2 = ringtemp[1];
 
-        //food
-        if (ACC * ((Food)gearsets[x][12]).accper > ((Food)gearsets[x][12]).accmax) {
-          ACC += ((Food)gearsets[x][12]).accmax;
-        } else { ACC += Math.Floor((ACC) * ((Food)gearsets[x][12]).accper); }
+              double WEP = 0;
+              double DEX = 274;
+              double INT = 274;
+              double ACC = 341;
+              double CRIT = 341;
+              double DTR = 202;
+              double SKS = 341;
+              double SPS = 341;
 
-        if (CRIT * ((Food)gearsets[x][12]).critper > ((Food)gearsets[x][12]).critmax) {
-          CRIT += ((Food)gearsets[x][12]).critmax;
-        } else { CRIT += Math.Floor((CRIT) * ((Food)gearsets[x][12]).critper); }
+              //sum of stats
+              for (var y = 0; y < gearsets[x].Count - 1; y++) {
+                WEP += ((Item)gearsets[x][y]).WEP;
+                DEX += ((Item)gearsets[x][y]).DEX;
+                INT += ((Item)gearsets[x][y]).INT;
+                ACC += ((Item)gearsets[x][y]).ACC;
+                CRIT += ((Item)gearsets[x][y]).CRIT;
+                DTR += ((Item)gearsets[x][y]).DTR;
+                SKS += ((Item)gearsets[x][y]).SKS;
+                SPS += ((Item)gearsets[x][y]).SPS;
+              }
 
-        if (DTR * ((Food)gearsets[x][12]).dtrper > ((Food)gearsets[x][12]).dtrmax) {
-          DTR += ((Food)gearsets[x][12]).dtrmax;
-        } else { DTR += Math.Floor((DTR) * ((Food)gearsets[x][12]).dtrper); }
+              //food
+              if (ACC * ((Food)gearsets[x][12]).accper > ((Food)gearsets[x][12]).accmax) {
+                ACC += ((Food)gearsets[x][12]).accmax;
+              } else { ACC += Math.Floor((ACC) * ((Food)gearsets[x][12]).accper); }
 
-        if (SKS * ((Food)gearsets[x][12]).sksper > ((Food)gearsets[x][12]).sksmax) {
-          SKS += ((Food)gearsets[x][12]).sksmax;
-        } else { SKS += Math.Floor((SKS) * ((Food)gearsets[x][12]).sksper); }
+              if (CRIT * ((Food)gearsets[x][12]).critper > ((Food)gearsets[x][12]).critmax) {
+                CRIT += ((Food)gearsets[x][12]).critmax;
+              } else { CRIT += Math.Floor((CRIT) * ((Food)gearsets[x][12]).critper); }
 
-        if (SPS * ((Food)gearsets[x][12]).spsper > ((Food)gearsets[x][12]).spsmax) {
-          SPS += ((Food)gearsets[x][12]).spsmax;
-        } else { SPS += Math.Floor((SPS) * ((Food)gearsets[x][12]).spsper); }
-        //create object
-        TempGearSet.wepdmg = WEP;
-        TempGearSet.totaldex = DEX;
-        TempGearSet.totalint = INT;
-        TempGearSet.bonusdex = DEX - 274;
-        TempGearSet.bonusint = INT - 274;
-        TempGearSet.totalacc = ACC;
-        TempGearSet.bonusacc = ACC - 341;
-        TempGearSet.totalcrit = CRIT;
-        TempGearSet.bonuscrit = CRIT - 341;
-        TempGearSet.totaldtr = DTR;
-        TempGearSet.bonusdtr = DTR - 202;
-        TempGearSet.totalsks = SKS;
-        TempGearSet.bonussks = SKS - 341;
-        TempGearSet.bonussps = SPS - 341;
-        TempGearSet.totalsps = SPS;
+              if (DTR * ((Food)gearsets[x][12]).dtrper > ((Food)gearsets[x][12]).dtrmax) {
+                DTR += ((Food)gearsets[x][12]).dtrmax;
+              } else { DTR += Math.Floor((DTR) * ((Food)gearsets[x][12]).dtrper); }
 
-        //acc cap 
-        double calcdacc = 0;
-        if (TempGearSet.totalacc > ACCCAP) {
-          calcdacc = ACCCAP - 341;
-        } else { calcdacc = TempGearSet.bonusacc; }
+              if (SKS * ((Food)gearsets[x][12]).sksper > ((Food)gearsets[x][12]).sksmax) {
+                SKS += ((Food)gearsets[x][12]).sksmax;
+              } else { SKS += Math.Floor((SKS) * ((Food)gearsets[x][12]).sksper); }
+
+              if (SPS * ((Food)gearsets[x][12]).spsper > ((Food)gearsets[x][12]).spsmax) {
+                SPS += ((Food)gearsets[x][12]).spsmax;
+              } else { SPS += Math.Floor((SPS) * ((Food)gearsets[x][12]).spsper); }
+              //create object
+              TempGearSet.wepdmg = WEP;
+              TempGearSet.totaldex = DEX;
+              TempGearSet.totalint = INT;
+              TempGearSet.bonusdex = DEX - 274;
+              TempGearSet.bonusint = INT - 274;
+              TempGearSet.totalacc = ACC;
+              TempGearSet.bonusacc = ACC - 341;
+              TempGearSet.totalcrit = CRIT;
+              TempGearSet.bonuscrit = CRIT - 341;
+              TempGearSet.totaldtr = DTR;
+              TempGearSet.bonusdtr = DTR - 202;
+              TempGearSet.totalsks = SKS;
+              TempGearSet.bonussks = SKS - 341;
+              TempGearSet.bonussps = SPS - 341;
+              TempGearSet.totalsps = SPS;
+
+              //acc cap 
+              double calcdacc = 0;
+              if (TempGearSet.totalacc > ACCCAP) {
+                calcdacc = ACCCAP - 341;
+              } else { calcdacc = TempGearSet.bonusacc; }
 
 
-        // dps-score
-        switch (CurrentJob)
-        {
-          case Classes_Enum.Bard:
-            TempGearSet.dpsscore = TempGearSet.wepdmg * WEPWEIGHT + TempGearSet.bonusdex * MAINWEIGHT + calcdacc * ACCWEIGHT + TempGearSet.bonuscrit * CRITWEIGHT + TempGearSet.bonusdtr * DTRWEIGHT + TempGearSet.bonussks * SKSWEIGHT;
-            break;
-          case Classes_Enum.BLM:
-            TempGearSet.dpsscore = TempGearSet.wepdmg * WEPWEIGHT + TempGearSet.bonusint * MAINWEIGHT + calcdacc * ACCWEIGHT + TempGearSet.bonuscrit * CRITWEIGHT + TempGearSet.bonusdtr * DTRWEIGHT + TempGearSet.bonussps * SPSWEIGHT;
-            break;
-        }
+              // dps-score
+              switch (CurrentJob) {
+                case Classes_Enum.Bard:
+                  TempGearSet.dpsscore = TempGearSet.wepdmg * WEPWEIGHT + TempGearSet.bonusdex * MAINWEIGHT + calcdacc * ACCWEIGHT + TempGearSet.bonuscrit * CRITWEIGHT + TempGearSet.bonusdtr * DTRWEIGHT + TempGearSet.bonussks * SKSWEIGHT;
+                  break;
+                case Classes_Enum.BLM:
+                  TempGearSet.dpsscore = TempGearSet.wepdmg * WEPWEIGHT + TempGearSet.bonusint * MAINWEIGHT + calcdacc * ACCWEIGHT + TempGearSet.bonuscrit * CRITWEIGHT + TempGearSet.bonusdtr * DTRWEIGHT + TempGearSet.bonussps * SPSWEIGHT;
+                  break;
+              }
 
-        GearSets.Add(TempGearSet);
-      }
-      Timer.Stop();
+              GearSets[x] = TempGearSet;
+            }
+      );
 
+      QuicksortParallel(GearSets, 0, TotalSets - 1);
+//      GearSets = GearSets.OrderBy(x => x.dpsscore).ThenBy(x => x.food.name).ToArray();
+
+      Timer.Stop(); // done
       TimeSpan ts = Timer.Elapsed;
       string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
           ts.Hours, ts.Minutes, ts.Seconds,
           ts.Milliseconds / 10);
 
-      GearSets = GearSets.OrderBy(x => x.dpsscore).ThenBy(x => x.food.name).ToList();
-      
-      for (var x = GearSets.Count-1; x > 2; x-- ) {
-        if (GearSets[x].dpsscore == GearSets[x-1].dpsscore && GearSets[x].food.name == GearSets[x-1].food.name) {
-          GearSets.RemoveAt(x);
-        }
-      }
-
       Results.Text = "";
       var count = 1;
-      Results.Text += "Total Gear Sets: " + GearSets.Count;
+      Results.Text += "Total Gear Sets: " + TotalSets;
       Results.Text += Environment.NewLine;
       Results.Text += Environment.NewLine;
-      for (var x = GearSets.Count - 1; x >= GearSets.Count - 10; x--) {
+
+      for (var x = TotalSets - 1; x >= 0 && count <= 10; x--) {
+        if (x > 0 && GearSets[x].dpsscore == GearSets[x - 1].dpsscore && GearSets[x].food.name == GearSets[x - 1].food.name)
+          continue; // skip the duplicate entry
 
         Results.Text += "Gear Set: " + count;
-        count += 1;
+        count++;
         Results.Text += Environment.NewLine;
         Results.Text += "Weapon: " + GearSets[x].weapon.name;
         Results.Text += Environment.NewLine;
@@ -524,7 +588,6 @@ namespace FFXIVBISCALC {
       }
 
       Results.Text += "BiS calc: " + elapsedTime;
-
     }
 
     private void Button_Click(object sender, RoutedEventArgs e) {

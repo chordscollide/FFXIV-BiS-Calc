@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Debug\
+C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\obj\Release\
 FFXIV_BiS_Calculator
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\x\Documents\GitHub\FFXIV-BiS-Calc\FFXIV-BiS-Calculator\App.xaml
 11151548125
 
