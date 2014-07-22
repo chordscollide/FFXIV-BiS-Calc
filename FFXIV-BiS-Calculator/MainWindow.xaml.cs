@@ -208,8 +208,8 @@ namespace FFXIVBISCALC {
       int i = low - 1;
 
       for (int j = low; j < high; j++) {
-        if (input[j].dpsscore <= pivot.dpsscore 
-          || (input[j].dpsscore == pivot.dpsscore && input[i].food.name.CompareTo(pivot.food.name) < 0) ) {
+        if (input[j].dpsscore < pivot.dpsscore 
+          || (input[j].dpsscore == pivot.dpsscore && input[j].food.name.CompareTo(pivot.food.name) < 0) ) {
           i++;
           swap(input, i, j);
         }
